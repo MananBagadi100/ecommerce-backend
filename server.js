@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const {verifyToken} = require('./Middleware/verifyToken.js')
-const whiteList = ['http://localhost:5173'] //enter allowed url's
+const whiteList = [process.env.FRONTEND_URL] //enter allowed url's
 let corsOptions = {
     origin: function(origin,callback) {
         if(whiteList.indexOf(origin) !== -1 || !origin) {
