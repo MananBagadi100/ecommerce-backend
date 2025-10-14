@@ -25,13 +25,21 @@ app.use(express.json())
 
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
-//all public routes come here
-const eCommRoutes = require('./Routes/e-commRoutes.js')
-app.use('/api',eCommRoutes.router)  
+// //all public routes come here
+// const eCommRoutes = require('./Routes/e-commRoutes.js')
+// app.use('/api',eCommRoutes.router)  
 
-//all protected routes come below
-const protectedMainRoutes = require('./Routes/ProtectedRoutes.js')
-app.use('/api/auth',protectedMainRoutes.router)
+// //all protected routes come below
+// const protectedMainRoutes = require('./Routes/ProtectedRoutes.js')
+// app.use('/api/auth',protectedMainRoutes.router)
+
+const path = require('path');
+
+const eCommRoutes = require(path.join(__dirname, 'Routes/e-commRoutes.js'))
+const protectedRoutes = require(path.join(__dirname, 'Routes/ProtectedRoutes.js'))
+
+app.use('/api', eCommRoutes.router)
+app.use('/api/auth', protectedRoutes.router)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server running on http://localhost: ${process.env.PORT}`)
