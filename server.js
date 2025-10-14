@@ -38,8 +38,8 @@ const path = require('path');
 const eCommRoutes = require(path.join(__dirname, 'Routes/e-commRoutes.js'))
 const protectedRoutes = require(path.join(__dirname, 'Routes/ProtectedRoutes.js'))
 
-app.use('/api', eCommRoutes.router)
-app.use('/api/auth', protectedRoutes.router)
+app.use('/api',verifyToken ,eCommRoutes.router)
+app.use('/api/auth',verifyToken ,protectedRoutes.router)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server running on http://localhost: ${process.env.PORT}`)
