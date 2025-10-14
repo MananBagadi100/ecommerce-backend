@@ -30,7 +30,7 @@ const eCommRoutes = require('./Routes/e-commRoutes.js')
 app.use('/api',eCommRoutes.router)  
 
 //all protected routes come below
-const protectedRoutes = require('./Routes/ProtectedRoutes.js')
+const protectedRoutes = require('backend/Routes/ProtectedRoutes.js')
 app.use('/api/auth',protectedRoutes.router)
 
 app.listen(process.env.PORT, () => {
