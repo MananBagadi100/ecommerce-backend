@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Ecomm = require('../controllers/eCommPublicController.js')
+const Ecomm = require('../controllers/eCommPublicController.js')      
 router.post('/register',Ecomm.registerNewUser)
 router.post('/login',Ecomm.loginUser)
 router.get('/authenticate',Ecomm.authenticateToken)

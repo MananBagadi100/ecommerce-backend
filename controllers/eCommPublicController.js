@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const secretKey = process.env.JWT_SECRET
 const bcrypt = require('bcrypt')
-const Operations = require('../models/eCommModels.js')
+const Operations = require('../models/eCommModels.js')  
 
 async function registerNewUser (req,res,next) {
     //check if the user already exists in the database or not
