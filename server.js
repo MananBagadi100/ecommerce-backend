@@ -38,6 +38,23 @@ const path = require('path');
 const eCommRoutes = require(path.join(__dirname, 'Routes/e-commRoutes.js'))
 const protectedRoutes = require(path.join(__dirname, 'Routes/ProtectedRoutes.js'))
 
+//to test deployment of backend 
+app.get('/api',(req,res) => {
+    res.send('Backend working and connected successfully !')
+})
+
+//to test database connection
+const pool = require('./config/db.js')
+app.get('/api/testdb', async (req,res) => {
+    try {
+        const [rows] = await pool.query('SELECT NOW() AS current_time;')
+        res.json({msg : "Database successfully connected",time: rows[0].current_time })
+    }
+    catch (error) {
+        res.status(500).json({msg : "Database connection failed",error : error.message})
+    }
+})
+
 app.use('/api',verifyToken ,eCommRoutes.router)
 app.use('/api/auth',verifyToken ,protectedRoutes.router)
 
