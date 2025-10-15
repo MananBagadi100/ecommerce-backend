@@ -47,7 +47,7 @@ app.get('/api/health',(req,res) => {
 const netPool = require('./config/db.js')
 app.get('/api/testdb', async (req,res) => {
     try {
-        const [rows] = await netPool.pool.query('SELECT NOW() AS current_time;')
+        const [rows] = await netPool.pool.query('SELECT NOW() AS current_time')
         res.json({msg : "Database successfully connected",time: rows[0].current_time })
     }
     catch (error) {
