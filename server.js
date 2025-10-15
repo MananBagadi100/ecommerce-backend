@@ -39,7 +39,7 @@ const eCommRoutes = require(path.join(__dirname, 'Routes/e-commRoutes.js'))
 const protectedRoutes = require(path.join(__dirname, 'Routes/ProtectedRoutes.js'))
 
 //to test deployment of backend 
-app.get('/api',(req,res) => {
+app.get('/api/health',(req,res) => {
     res.send('Backend working and connected successfully !')
 })
 
