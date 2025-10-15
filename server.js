@@ -15,7 +15,7 @@ const {verifyToken} = require('./Middleware/verifyToken.js')
 //     },
 //     credentials:true
 // }
-
+console.log('the frontend url is ',process.env.FRONTEND_URL)
 const allowedOrigins = [
   "http://localhost:5173",
   "https://ecommerce-frontend-six-ruby.vercel.app"
@@ -75,9 +75,13 @@ app.get('/api/testdb', async (req,res) => {
         res.status(500).json({msg : "Database connection failed",error : error.message})
     }
 })
-
-app.use('/api',verifyToken ,eCommRoutes.router)
-app.use('/api/auth',verifyToken ,protectedRoutes.router)
+//check auth status initially on the frontend
+const authCheckRoutes = require('./Routes/authRoutes.js')
+app.use('/authCheck',authCheckRoutes.router)
+//all the public routes come here
+app.use('/api',eCommRoutes.router)
+//all the protected routes come below
+app.use('/api/auth',protectedRoutes.router)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server running on http://localhost: ${process.env.PORT}`)

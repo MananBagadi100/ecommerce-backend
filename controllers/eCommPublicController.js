@@ -5,7 +5,9 @@ const Operations = require('../models/eCommModels.js')
 
 async function registerNewUser (req,res,next) {
     //check if the user already exists in the database or not
+    console.log('i am inside register new user')
     const exists = await Operations.checkUserExists(req.body)
+    console.log('exists in register new user is ',exists)
     if(exists.length > 0) {
         res.json({msg:"User already exists in the database"})
     }
