@@ -3,18 +3,39 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const {verifyToken} = require('./Middleware/verifyToken.js')
-const whiteList = [process.env.FRONTEND_URL] //enter allowed url's
-let corsOptions = {
-    origin: function(origin,callback) {
-        if(whiteList.indexOf(origin) !== -1 || !origin) {
-            callback(null,true)
-        }
-        else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    },
-    credentials:true
-}
+// const whiteList = [process.env.FRONTEND_URL] //enter allowed url's
+// let corsOptions = {
+//     origin: function(origin,callback) {
+//         if(whiteList.indexOf(origin) !== -1 || !origin) {
+//             callback(null,true)
+//         }
+//         else {
+//             callback(new Error('Not allowed by CORS'))
+//         }
+//     },
+//     credentials:true
+// }
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://ecommerce-frontend-six-ruby.vercel.app"
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log("❌ Blocked by CORS:", origin);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 //Middleware to parse and read cookie data
 const cookieParser = require('cookie-parser')
 app.use(cookieParser())
