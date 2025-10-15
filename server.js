@@ -48,7 +48,7 @@ const netPool = require('./config/db.js')
 app.get('/api/testdb', async (req,res) => {
     try {
         const [rows] = await netPool.pool.query('SHOW TABLES;')
-        res.json({msg : "Database successfully connected",time: rows[0] })
+        res.json({msg : "Database successfully connected",tables: rows })
     }
     catch (error) {
         res.status(500).json({msg : "Database connection failed",error : error.message})
