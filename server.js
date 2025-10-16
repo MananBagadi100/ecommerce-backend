@@ -75,9 +75,9 @@ app.get('/api/testdb', async (req,res) => {
         res.status(500).json({msg : "Database connection failed",error : error.message})
     }
 })
-//check auth status initially on the frontend
-const authCheckRoutes = require('./Routes/authRoutes.js')
-app.use('/authCheck',authCheckRoutes.router)
+//check auth status on the frontend so user does'nt have to re-login on every reload
+const authCheckFunction = require('./Middleware/authCheck.js')
+app.use('/api/authCheck',authCheckFunction.authCheck)
 //all the public routes come here
 app.use('/api',eCommRoutes.router)
 //all the protected routes come below
