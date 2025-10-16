@@ -20,7 +20,7 @@ async function registerNewUser (req,res,next) {
                 "contactNo": req.body.contactNo
             }
             const token = jwt.sign(tokenPayload,secretKey)
-            res.cookie('jwtAuthCookie',token,{httpOnly:true,secure:false,maxAge:14400000})
+            res.cookie('jwtAuthCookie',token,{httpOnly:true,secure:false,sameSite:'None',partitioned:true,maxAge:14400000})
             res.json({msg : "User Added Successfully",isLoggedIn:true})
         }
         else {
@@ -41,7 +41,7 @@ async function loginUser (req,res,next) {
                     "contactNo": req.body.contactNo
                 }
                 const token = jwt.sign(tokenPayload,secretKey)
-                res.cookie("jwtAuthCookie",token,{httpOnly:true,secure:false,maxAge:14400000,})
+                res.cookie("jwtAuthCookie",token,{httpOnly:true,secure:false,sameSite:'None',partitioned:true,maxAge:14400000,})
                 res.json({msg : "Username and password are correct",isLoggedIn:true})
             }
             else {
