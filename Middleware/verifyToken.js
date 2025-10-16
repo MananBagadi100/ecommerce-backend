@@ -6,6 +6,7 @@ async function verifyToken (req,res,next) {
     }
     try {
         const decoded = jwt.verify(clientToken,process.env.JWT_SECRET)
+        console.log("Decoded payload:", decoded);
         req.user = decoded      //attaching user info so that next route can use it 
         console.log('in verify token ',req.user)
         return next()
