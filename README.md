@@ -2,7 +2,7 @@
 
 Backend service for the e-commerce application built with Node.js, Express, and MySQL.
 
-**Frontend Repository**: [ecommerce-frontend](https://github.com/your-username/ecommerce-frontend)
+**Frontend Repository**: [https://github.com/MananBagadi100/ecommerce-frontend](https://github.com/MananBagadi100/ecommerce-frontend)
 
 ---
 
@@ -188,7 +188,7 @@ router.get('/profile', verifyToken, (req, res) => {
 6. Add all environment variables from `.env`
 7. Deploy
 
-Your backend URL: `https://your-backend.onrender.com`
+Your backend URL: `https://ecommerce-backend.onrender.com (replace with your actual backend deployment URL if different)`
 
 ---
 
@@ -213,7 +213,7 @@ Full Stack Developer | Machine Learning Enthusiast
 
 📧 mananbagadi100@gmail.com
 
-🌐 [linkedin.com/in/manan-bagadi-8599b0225](https://www.linkedin.com/in/manan-bagadi-8599b0225/)
+🌐 [https://www.linkedin.com/in/manan-bagadi-8599b0225/](https://www.linkedin.com/in/manan-bagadi-8599b0225/)
 
 ---
 
