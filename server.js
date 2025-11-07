@@ -18,7 +18,8 @@ const {verifyToken} = require('./Middleware/verifyToken.js')
 console.log('the frontend url is ',process.env.FRONTEND_URL)
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://ecommerce-frontend-six-ruby.vercel.app"
+  "https://ecommerce-frontend-six-ruby.vercel.app",
+  "http://localhost:4173"
 ];
 
 const corsOptions = {
